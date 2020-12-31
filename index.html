@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+</head>
+<body>
+    <div class="clock">
+        <div class="twel"></div>
+        <div class="tre"></div>
+        <div class="six"></div>
+        <div class="nin"></div>
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand sec-hand"></div>
+        </div>
+    </div>
+
+    <style>
+
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(101, 162, 253);
+        }
+
+        .clock{
+            border: 10px solid white;
+            border-radius: 50%;
+            height: 13rem;
+            width: 13rem;
+
+        }
+
+        .twel{
+            position: absolute;
+            background-color: black;
+            width: 2px;
+            height: 10px;
+            left: 49.9%;
+            transform: translateY(-10px);
+        }
+
+        .tre{
+            position: absolute;
+            background-color: black;
+            width: 10px;
+            height: 2px;
+            top: 50%;
+            left: 57.6%;
+        }
+
+        .nin{
+            position: absolute;
+            background-color: black;
+            width: 10px;
+            height: 2px;
+            top: 50%;
+            left: 41.6%;
+        }
+
+        .six{
+            position: absolute;
+            background-color: black;
+            width: 2px;
+            height: 10px;
+            left: 49.9%;
+            top: 65.9%;
+        }
+
+        .clock-face{
+            position: relative;
+            height: 100%;
+            width: 100%;
+            /* transform: translatey(-3px); */
+        }
+
+        .hand{
+            position: absolute;
+            top: 50%;
+            height: .1rem;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            /* transition: all .5s cubic-bezier(0, 2.43, 0.25, 1); */
+        }
+
+        .sec-hand{
+            width: 50%;
+            background-color: black;
+        }
+
+        .min-hand{
+            width: 50%;
+            background-color: black;
+        }
+
+        .hour-hand{
+            position: absolute;
+            width: 30%;
+            background-color: red;
+            right: 50%;
+            height: .2rem;
+        }
+    </style>
+
+    <script>
+
+            const sechand=document.querySelector('.sec-hand');
+            const minhand=document.querySelector('.min-hand');
+            const hourhand=document.querySelector('.hour-hand');
+                    
+
+            t=setInterval(st,1000);
+
+            function st(){
+                let date=new Date();
+
+                let sec=date.getSeconds();
+                let secDeg=sec*6+90;
+
+                sechand.style.transform=`rotate(${secDeg}deg)`;
+
+                let min=date.getMinutes();
+                let minDeg=min*6+90;
+
+                minhand.style.transform=`rotate(${minDeg}deg)`;
+
+                let hour=date.getHours();
+                let hourDeg=hour*30+90;
+
+                hourhand.style.transform=`rotate(${hourDeg}deg)`;
+            }
+    </script>
+</body>
+</html>
